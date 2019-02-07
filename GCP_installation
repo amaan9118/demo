@@ -1,0 +1,29 @@
+Login with root user. Use the command:
+#sudo -i
+
+Disable the firewall.
+#chkconfig iptables off
+
+Stop the currently running firewall
+#service iptables stop
+
+Stop the currently running SELinux.
+#setenforce 0
+
+Disable the SELinux.
+#vi /etc/selinux/config
+Write “disabled” in place of “enforcing”.
+
+Setup SSHD.
+#vi /etc/ssh/sshd_config
+Scroll down to # Authentication:. 
+There you will find PermitRootLogin. 
+Change it to yes. write yes in place of no.
+Scroll down again. You will find an option PasswordAuthentication. Change it to yes.
+Again scroll down and you will get ChallengeResponseAuthentication. Edit it to yes.
+
+Now set the password for your node.
+#sudo passwd
+
+Reboot for changes to be applied
+#reboot
